@@ -1,34 +1,51 @@
-# encoding: utf-8
 require 'rack'
+require 'twitter'
+require './configure'
 
-class HelloWorld
+class Twittapp
 
   def call env
     req = Rack::Request.new(env)
     res = Rack::Response.new 
     res['Content-Type'] = 'text/html'
-    name = (req["firstname"] && req["firstname"] != '') ? req["firstname"] :'World'
+    username = (req["user"] && req["user"] != '') ? req["user"] :''
+    user_tweets = (!username.empty?) ? usuario_registrado?(username) : "Introduzca un usuario de twitter"
     res.write <<-"EOS"
       <!DOCTYPE HTML>
       <html>
-        <title>Rack::Response</title>
+        <title>TwittApp</title>
         <body>
-          <h1>
-             Hello #{name}!
-             <form action="/" method="post">
-               Your name: <input type="text" name="firstname" autofocus><br>
-               <input type="submit" value="Submit">
-             </form>
-          </h1>
+          <section>
+
+            <form action="/" method="post">
+              Introducir usuario <input type="text" name="user" autofocus><br>
+              <input type="submit" value="Mostrar tweets">
+            </form>
+          </section>
+          
+          <section>
+            <h2>El ultimo tweet deberia mostrarse</h2>
+            Usuario: #{username}
+            <br>
+            Ultimo tweet: #{user_tweets}
+          </section>
         </body>
       </html>
     EOS
     res.finish
   end
+
+  def usuario_registrado?(user)
+    begin
+    	Twitter.user_timeline(user).first.text
+    	rescue
+      	"Error: ¡El usuario introducido no tiene una cuenta en Twitter!"
+    end
+  end
 end
 
 Rack::Server.start(
-  :app => HelloWorld.new,
+  :app => Twittapp.new,
   :Port => 9292,
   :server => 'thin'
 )
