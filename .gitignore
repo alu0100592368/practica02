@@ -1,2 +1,5 @@
 *.DS_Store
 configure.rb
+config.ru
+index.html
+public/**/* 

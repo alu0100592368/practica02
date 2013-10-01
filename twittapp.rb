@@ -16,18 +16,18 @@ class Twittapp
         <title>TwittApp</title>
         <body>
           <section>
+            <h1>TwittApp</h1>
+            <p>Introduciendo un usuario podremos ver su último tweet.</p>
 
             <form action="/" method="post">
-              Introducir usuario <input type="text" name="user" autofocus><br>
-              <input type="submit" value="Mostrar tweets">
+              Introduzca un usuario de Twitter <input type="text" name="user" autofocus><br>
+              <input type="submit" value="Mostrar último tweet">
             </form>
           </section>
           
           <section>
-            <h2>El ultimo tweet deberia mostrarse</h2>
-            Usuario: #{username}
-            <br>
-            Ultimo tweet: #{user_tweets}
+            <h2>Último tweet</h2>
+            #{username}<br>#{user_tweets}
           </section>
         </body>
       </html>
@@ -46,6 +46,6 @@ end
 
 Rack::Server.start(
   :app => Twittapp.new,
-  :Port => 9292,
+  :Port => 8080,
   :server => 'thin'
 )
