@@ -14,8 +14,8 @@ class Twittapp
       <!DOCTYPE HTML>
       <html>
         <head>
-      		<title> TwittApp </title>
-      		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title> TwittApp </title>
+      	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
    		</head>
         <body>
           <section>
