@@ -9,7 +9,7 @@ class Twittapp
     res = Rack::Response.new 
     res['Content-Type'] = 'text/html'
     username = (req["user"] && req["user"] != '') ? req["user"] :''
-    user_tweets = (!username.empty?) ? usuario_registrado?(username) : "Introduzca un nombre de usuario registrado en Twitter"
+    user_tweets = (!username.empty?) ? usuario_registrado?(username) : "¡Introduzca un nombre de usuario!"
     res.write <<-"EOS"
       <!DOCTYPE HTML>
       <html>
