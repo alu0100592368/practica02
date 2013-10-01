@@ -9,25 +9,32 @@ class Twittapp
     res = Rack::Response.new 
     res['Content-Type'] = 'text/html'
     username = (req["user"] && req["user"] != '') ? req["user"] :''
-    user_tweets = (!username.empty?) ? usuario_registrado?(username) : "Introduzca un usuario de twitter"
+    user_tweets = (!username.empty?) ? usuario_registrado?(username) : "Introduzca un nombre de usuario registrado en Twitter"
     res.write <<-"EOS"
       <!DOCTYPE HTML>
       <html>
-        <title>TwittApp</title>
+        <head>
+      		<title> TwittApp </title>
+      		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   		</head>
         <body>
           <section>
             <h1>TwittApp</h1>
-            <p>Introduciendo un usuario podremos ver su último tweet.</p>
-
+            <p>Práctica 2: Accediendo a Twitter y mostrando los últimos twitts en una página.</p>
+            <h4>Instrucciones:</h4>
             <form action="/" method="post">
-              Introduzca un usuario de Twitter <input type="text" name="user" autofocus><br>
-              <input type="submit" value="Mostrar último tweet">
+            Introduzca un nombre de usuario registrado en Twitter para mostrar su último tweet: <input type="text" name="user" autofocus><br>
+            <br>
+            <input type="submit" value="Confirmar usuario">
             </form>
           </section>
           
           <section>
-            <h2>Último tweet</h2>
-            #{username}<br>#{user_tweets}
+            <h4>Visualizar último tweet:</h4>
+            Usuario: #{username}
+            <br>
+            Último tweet del usuario: #{user_tweets}
+            <br>
           </section>
         </body>
       </html>
