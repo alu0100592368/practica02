@@ -18,24 +18,21 @@ class Twittapp
       	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
       	</head>
         <body>
-          <section>
-            <h1>TwittApp</h1>
-            <p>Práctica 2: Accediendo a Twitter y mostrando los últimos twitts en una página.</p>
-            <h4>Instrucciones:</h4>
-            <form action="/" method="post">
-            Introduzca un nombre de usuario registrado en Twitter para mostrar su último tweet: <input type="text" name="user" autofocus><br>
+          <h1>TwittApp</h1>
+          <p>Práctica 2: Accediendo a Twitter y mostrando los últimos twitts en una página.</p>
+          <h4>Instrucciones:</h4>
+          <form action="/" method="post">
+            Introduzca un nombre de usuario registrado en Twitter para mostrar su último tweet: <input type="text" name="user" autofocus>
             <br>
             <input type="submit" value="Confirmar usuario">
-            </form>
-          </section>
-          
-          <section>
-            <h4>Visualizar último tweet:</h4>
-            Usuario: #{username}
-            <br>
-            Último tweet del usuario: #{user_tweets}
-            <br>
-          </section>
+          </form>
+          <h4>Visualizar último tweet:</h4>
+          Usuario: #{username}
+          <br>
+          Último tweet del usuario: #{user_tweets}
+          <br>
+          <br>
+          <p id="copyright">&copy; Diego Williams Aguilar Montaño - Sistemas y Tecnologías Web 2013-14</p>
         </body>
       </html>
     EOS
